@@ -356,9 +356,7 @@
             <div class="carousel-caption">
               <a class="article-href">
               <h1 class="article-title">a</h1>
-              <div class="carousel-img">
-                
-              </div>
+                <div class="carousel-img"></div>
             </a>
               <p class="lead"></p>
             </div>
@@ -369,9 +367,7 @@
             <div class="carousel-caption">
               <a class="article-href">
               <h1 class="article-title">a</h1>
-              <div class="carousel-img">
-                
-              </div>
+              <div class="carousel-img"></div>
             </a>
               <p class="lead"></p>
             </div>
@@ -500,7 +496,7 @@
           var i = 0;
           $.each(items, function(){
             $(this).find('h1').html(data.rows[i].title); 
-            $(this).find('.lead').html(data.rows[i].description);
+            $(this).find('.lead').html(data.rows[i].description+"<a style=\"padding-left:50px;\" href=\""+data.rows[i].loc+"\">Read the full story &gt;&gt;</a>");
             var img = new Image();
             img.src = data.rows[i].thumbnail;
             $(this).find('.carousel-img').append(img);
