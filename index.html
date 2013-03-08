@@ -52,11 +52,35 @@
         width: 550px;
         height: 428px;
         padding: 0 0px;
-        margin: 0 0 0 20px;
+        margin: 0 0 0 50px;
         z-index:30;
         pointer-events:none;
+        position:relative;
+        top:-8px;
 
       }
+
+
+      .masthead .mongabay-search-box {
+        top:-436px;
+        height:0px;
+        margin:none;
+        float:right;
+        left:-10px;
+/*        background-color: transparent;
+        position: static;
+        width: 550px;
+        height: 428px;
+        padding: 0 0px;
+        margin: 0 0 0 50px;
+        z-index:30;
+        pointer-events:none;
+        position:relative;
+        top:-8px;*/
+
+      }
+
+
       .masthead-search {
         float: left; position: relative;
         margin-top: 0px;
@@ -78,6 +102,11 @@
         font-family: "Proxima Nova", sans-serif;
       }
       .masthead-search .mb-sub-title {
+        float: left; width: 90%; line-height: 25px; font-size: 22px;
+        padding: 2px 8px 2px 20px; margin: 0; text-align: left;
+        color: #ddd;
+      }
+      .masthead-search .mb-sub-title-desc {
         float: left; width: 90%; line-height: 25px; font-size: 22px;
         padding: 2px 8px 10px 20px; margin: 0; text-align: left;
         color: #ddd;
@@ -122,6 +151,7 @@
         color: #888;
       }
 
+
  /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
 
@@ -134,16 +164,18 @@
       margin-bottom: 60px;
       margin-left: -20px;
       margin-right: -20px;
-      height: 300px;
-      overflow: hidden;
+      height: 200px;
+      overflow: visible;
 /*        background-color: #393e4a;
         background-color: rgba(57,62,75,0.95);*/
     }
 
     .carousel .container {
       position: relative;
-      float: left; height: 100%;
+      float: left;
+      height: 100%;
       z-index: 9;
+      width:99%;
     }
 
     .carousel-control {
@@ -162,11 +194,11 @@
     }
     .carousel-img {
       position: relative; float: left;
-      margin: 2px 20px 0 0;
-      padding: 18px 0 18px 18px;
+      margin: 10px 20px 0 0;
+      padding: 12px 0 12px 12px;
       border: 1px solid #393e4a;
       border: 1px solid rgba(57,62,75,0.95);
-      width: 170px;
+      width: 162px;
       -moz-border-radius: 6px;
       -webkit-border-radius: 6px;
       -khtml-border-radius: 6px;
@@ -238,7 +270,10 @@
         color:#44aa44;
       }
 
-
+      .mongabay-search-box {
+        position:absolute;
+/*        top:-200px;*/
+      }
 
     </style>
     <!-- Le fav and touch icons -->
@@ -258,7 +293,7 @@
             <div style="color:black;font-size:18px;line-height:19px;text-align:center;width:100%;font-weight:bold;clear:both;">
               {{content.data.title}}
               <br />
-              <span style="font-weight:normal; font-size:65%;">Published: 
+              <span style="font-weight:normal; font-size:65%;"><!--Published: -->
               {{content.data.published}}
               </span>
               </div>
@@ -286,7 +321,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="//www.mongabay.com/">MongaBay</a>
+          <a class="brand" href="//www.mongabay.com/">Mongabay</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active">
@@ -307,6 +342,15 @@
     <div class="masthead-search">
       <div class="mb-title">Environmental News</div>
       <div class="mb-sub-title">Access the latest geospatial news</div>
+      <div class="mb-sub-title-desc" style="font-size:80%;">Click and drag the map to change position. Zoom in and out using the +/- buttons on the top left.</div>
+
+
+    </div>
+
+  </div>
+
+  <div class="containerx mongabay-search-box">
+    <div class="masthead-search" style="padding-top:20px;padding-bottom:10px;">
 
       <input class="mb-input"></input>
       <input class="mb-input-button" type="submit" value="Search">
@@ -317,23 +361,28 @@
         Popular:
       </li>
       <li>
-        <a >Wildlife</a>
+        <a style="font-size:80%;position:relative;top:-1px;">Deforestation</a>
       </li>
       <li>
-        <a >Climate change</a>
+        <a style="font-size:80%;position:relative;top:-1px;">Indonesia</a>
       </li>
       <li>
-        <a >Species</a>
+        <a style="font-size:80%;position:relative;top:-1px;">Palm Oil</a>
       </li>
       <li>
-        <a >River</a>
+        <a style="font-size:80%;position:relative;top:-1px;">Amazon</a>
+      </li>
+      <li>-
       </li>
       <li>
-        <a class="clear" style="padding-left:20px;font-weight:bold;">Clear Search</a>
+        <a class="clear" style="padding-left:0px;font-weight:bold;">Clear Search</a>
       </li>
     </ul>
   </div>
+
 </div>
+
+
 
 
     <!-- Carousel
@@ -413,8 +462,11 @@
     ================================================== -->
     <footer class="footer">
       <div class="container">
-       <!-- 
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+       
+        <p>Please note, the geospatial map mostly includes stories posted after January 1, 2013.</p>
+        <p>We are continually working to add older stories to the system.</p>
+        <p>&copy; 2013, Mongabay</p>
+      <!--
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
@@ -458,8 +510,8 @@
     function main() {
 
       var map = L.map('map', { 
-        zoomControl: false,
-        center: [0, 0],
+        zoomControl: true,
+        center: [20, 20],
         zoom: 3
       })
 
@@ -483,7 +535,7 @@
           var b = map.getBounds();
           var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
           var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
-          map.panTo([latlng[0] + d, latlng[1] - c]);
+          map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
          });
          map.addLayer(mapLayer);
       });
@@ -491,12 +543,16 @@
       var items = $('#myCarousel').find('.item');
 
       var sql = new cartodb.SQL({ user: 'mongabay'});
-      sql.execute("SELECT * FROM {{table_name}} WHERE thumbnail != '' and title != '' ORDER BY created_at DESC LIMIT 5", {table_name: 'mongabaydb'})
+      sql.execute("SELECT * FROM {{table_name}} WHERE thumbnail != '' and title != '' ORDER BY updated DESC LIMIT 5", {table_name: 'mongabaydb'},{},function(){
+
+       
+       // $(".leaflet-left").css("right","10px");
+      })
         .done(function(data) {
           var i = 0;
           $.each(items, function(){
             $(this).find('h1').html(data.rows[i].title); 
-            $(this).find('.lead').html(data.rows[i].description+"<a style=\"padding-left:50px;\" href=\""+data.rows[i].loc+"\">Read the full story &gt;&gt;</a>");
+            $(this).find('.lead').html(data.rows[i].description+"<a style=\"left:0px;position:relative;float:right;\" href=\""+data.rows[i].loc+"\">Read the full story &gt;&gt;</a>");
             var img = new Image();
             img.src = data.rows[i].thumbnail;
             $(this).find('.carousel-img').append(img);
@@ -521,6 +577,7 @@
 
     }
     window.onload = main;
+
 
 
 function strLimitLength(str,len) {
