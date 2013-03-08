@@ -343,10 +343,10 @@
         <div class="item active">
           <div class="container">
             <div class="carousel-caption">
-              <h1 class="article-title"></h1>
-              <div class="carousel-img">
-                
-              </div>
+              <a class="article-href">
+                <h1 class="article-title"></h1>
+                <div class="carousel-img"></div>
+              </a>
               <p class="lead"></p>
             </div>
           </div>
@@ -354,10 +354,12 @@
         <div class="item">
           <div class="container">
             <div class="carousel-caption">
+              <a class="article-href">
               <h1 class="article-title">a</h1>
               <div class="carousel-img">
                 
               </div>
+            </a>
               <p class="lead"></p>
             </div>
           </div>
@@ -365,10 +367,12 @@
         <div class="item">
           <div class="container">
             <div class="carousel-caption">
+              <a class="article-href">
               <h1 class="article-title">a</h1>
               <div class="carousel-img">
                 
               </div>
+            </a>
               <p class="lead"></p>
             </div>
           </div>
@@ -376,10 +380,12 @@
         <div class="item">
           <div class="container">
             <div class="carousel-caption">
+              <a class="article-href">
               <h1 class="article-title">a</h1>
               <div class="carousel-img">
                 
               </div>
+            </a>
               <p class="lead"></p>
             </div>
           </div>
@@ -387,10 +393,12 @@
         <div class="item">
           <div class="container">
             <div class="carousel-caption">
+              <a class="article-href">
               <h1 class="article-title">a</h1>
               <div class="carousel-img">
                 
               </div>
+            </a>
               <p class="lead"></p>
             </div>
           </div>
@@ -496,6 +504,7 @@
             var img = new Image();
             img.src = data.rows[i].thumbnail;
             $(this).find('.carousel-img').append(img);
+            $(this).find('.article-href').attr("href",data.rows[i].loc);
             i++;
           }); 
       });
@@ -524,6 +533,17 @@ function strLimitLength(str,len) {
   } else {
     return str;
   }
+
+  // $("#mb-input-search-term").keyup(function(pressed){
+  //   alert();
+    // if (pressed.which == 13) {
+    //     pressed.preventDefault();
+
+    //     alert();
+    //     // var z = setTimeout(js,10);
+    // }
+  // });
+
 }
 
     </script>
