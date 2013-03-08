@@ -34,18 +34,24 @@
         background-image: none;
         background-repeat: no-repeat;
         filter: none;
-        background-color: #393e4a;
-        background-color: rgba(57,62,75,0.95);
+        background-color: #8cc640;
+/*        background-color: rgba(57,62,75,0.95);*/
       }
+
       .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
         color: #8cc640;
       }
+
+      li.active {
+        background-color:gray;
+      }
+
       .masthead .containerx {
         background-color: transparent;
         position: static;
         width: 550px;
         height: 428px;
-        padding: 0 20px;
+        padding: 0 0px;
         margin: 0 0 0 20px;
         z-index:30;
         pointer-events:none;
@@ -53,7 +59,7 @@
       }
       .masthead-search {
         float: left; position: relative;
-        margin-top: 120px;
+        margin-top: 0px;
         line-height: 80px;
         width: 100%;
         color: #fff;
@@ -101,7 +107,7 @@
         margin-left:1.5%;
         color: #000;
         pointer-events:auto;
-        cursor: pointer;
+        
         background-color:#ccc;
         border-bottom-left-radius:6px;
         border-bottom-right-radius:6px;
@@ -110,6 +116,7 @@
       }
       .masthead-links a {
         color: #000;
+        cursor: pointer;
       }
       .masthead-links a:hover {
         color: #888;
@@ -198,7 +205,7 @@
     }
       .carousel-caption .btn {
         font-size: 18px;
-      margin-top: 10px;
+        margin-top: 10px;
       }
       .cartodb-popup-content-wrapper{
         z-index: 1000;
@@ -214,7 +221,7 @@
       }
 
       .cartodb-popup-content .btn-large:hover {
-        color:gray;
+        color:black;
       }
 
       .masthead-search .mb-input {
@@ -227,6 +234,10 @@
         border-bottom-right-radius:6px;
         font:normal 30px Arial;
       }
+      .masthead-search .mb-input-button:hover {
+        color:#44aa44;
+      }
+
 
 
     </style>
@@ -244,14 +255,15 @@
        <div class="cartodb-popup-content-wrapper">
          <div class="cartodb-popup-content">
            <p>
-            <h4 style="color:black;font-size:120%;text-align:center;">{{content.data.title}}</h4>
-           <!--</p>
-
-            <img style="width: 100%" src="{{content.data.thumbnail}}"><br/>
-
-           <p>-->
-            <a class="btn btn-primary btn-large" href="{{content.data.loc}}" target="_blank">View Article</a>
-           </p>
+            <div style="color:black;font-size:18px;line-height:19px;text-align:center;width:100%;font-weight:bold;clear:both;">
+              {{content.data.title}}
+              <br />
+              <span style="font-weight:normal; font-size:65%;">Published: 
+              {{content.data.published}}
+              </span>
+              </div>
+            <a class="btn btn-primary btn-large" href="{{content.data.loc}}" target="_blank" style="clear:both;">Read Full Article</a>
+           
            <!--<p>{{content.data.description}}</p>-->
          </div>
        </div>
@@ -263,6 +275,7 @@
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
+
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -273,23 +286,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="./index.html">MongaBay</a>
+          <a class="brand" href="//www.mongabay.com/">MongaBay</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active">
-                <a href="./index.html">Home</a>
+                <a href="//www.mongabay.com/" style="color:white;">Home</a>
               </li>
               <li class="">
-                <a href="http://www.mongabay.com/">News Home</a>
-              </li>
-              <li class="">
-                <a href="http://www.mongabay.com/about.html">About</a>
-              </li>
-              <li class="">
-                <a href="http://news.mongabay.com/newsletters.html">Newsletter</a>
-              </li>
-              <li class="">
-                <a href="http://www.mongabay.com/contact_mongabay.htm">Contact</a>
+                <a href="//news.mongabay.com/" style="color:white;">News Home</a>
               </li>
             </ul>
           </div>
@@ -303,10 +307,15 @@
     <div class="masthead-search">
       <div class="mb-title">Environmental News</div>
       <div class="mb-sub-title">Access the latest geospatial news</div>
+
       <input class="mb-input"></input>
       <input class="mb-input-button" type="submit" value="Search">
+
     </div>
     <ul class="masthead-links">
+      <li style="color:black;font-weight:bold;">
+        Popular:
+      </li>
       <li>
         <a >Wildlife</a>
       </li>
@@ -320,7 +329,7 @@
         <a >River</a>
       </li>
       <li>
-        <a class="clear">Clear</a>
+        <a class="clear" style="padding-left:20px;font-weight:bold;">Clear Search</a>
       </li>
     </ul>
   </div>
@@ -416,7 +425,6 @@
     </footer>
 
 
-
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -452,7 +460,8 @@
       })
 
       // add a nice baselayer from mapbox
-      L.tileLayer("https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png", {
+
+      L.tileLayer("https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-41exmwk3/{z}/{x}/{y}.png", {
         attribution: 'MapBox'
       }).addTo(map);
 
@@ -474,7 +483,6 @@
          });
          map.addLayer(mapLayer);
       });
-
 
       var items = $('#myCarousel').find('.item');
 
@@ -508,6 +516,16 @@
 
     }
     window.onload = main;
+
+
+function strLimitLength(str,len) {
+  if (str.length > len) {
+    return str.substr(0,len-2) + "...";
+  } else {
+    return str;
+  }
+}
+
     </script>
   </body>
 </html>
