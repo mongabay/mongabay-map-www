@@ -283,6 +283,7 @@
                     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="ico/favicon.png">
 
+
   <script type="infowindow/html" id="infowindow_template">
     <div class="cartodb-popup">
       <a href="#close" class="cartodb-popup-close-button close">x</a>
@@ -352,7 +353,7 @@
   <div class="containerx mongabay-search-box">
     <div class="masthead-search" style="padding-top:20px;padding-bottom:10px;">
 
-      <input class="mb-input"></input>
+      <input class="mb-input" id="mb-input-search-term"></input>
       <input class="mb-input-button" type="submit" value="Search">
 
     </div>
@@ -575,9 +576,18 @@
         $('.mb-input').val(s);
       });
 
+
+      $('#mb-input-search-term').keypress(function(event){
+        var code = ('charCode' in event) ? event.charCode : event.keyCode;
+        if (code === 13) {
+           var s = $('.mb-input').val();
+           mapLayer.setQuery("SELECT * FROM {{table_name}} WHERE description ILIKE '%"+s+"%'");
+        }
+        });
+
+
     }
     window.onload = main;
-
 
 
 function strLimitLength(str,len) {
@@ -587,15 +597,7 @@ function strLimitLength(str,len) {
     return str;
   }
 
-  // $("#mb-input-search-term").keyup(function(pressed){
-  //   alert();
-    // if (pressed.which == 13) {
-    //     pressed.preventDefault();
 
-    //     alert();
-    //     // var z = setTimeout(js,10);
-    // }
-  // });
 
 }
 
