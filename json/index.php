@@ -30,7 +30,7 @@ foreach ($obj["feed"]["entry"] as $i => $v) {
 	$node = array();
 	$node["guid"] = substr($v["id"],8+strpos($v["id"],"Article/"));
 	$node["published"] = @date("F j, Y", @strtotime($v["published"]));
-	$node["updated"] = $v["updated"]);
+	$node["updated"] = $v["updated"];
 	$node["loc"] = $v["link_attr"]["href"];
 	$node["title"] = 
 		// str_replace(
