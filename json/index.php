@@ -33,19 +33,19 @@ foreach ($obj["feed"]["entry"] as $i => $v) {
 	$node["updated"] = $v["updated"];
 	$node["loc"] = $v["link_attr"]["href"];
 	$node["title"] = 
-		// str_replace(
-		// array(	"&#8212;",	"&amp;", 	"’", 	"'", 	"'", 	"‘"	),
-		// array(	"—",				"&", 			"",		"", 	"",		""	),
-		$v["title"]
-		// )
+		str_replace(
+		array(	"&#8212;",	"&amp;", 	"’", 	"'", 	"'", 	"‘"	),
+		array(	"—",				"&", 			"",		"", 	"",		""	),
+			$v["title"]
+		)
 		;
 
 	$v["content"] = 
-		// str_replace(
-		// array(	"&#8212;",	"&amp;", 	"’", 	"'", 	"'", "‘"	),
-		// array(	"—",				"&", 			"",		"", 	"", ""	),
-		$v["content"]
-		// )
+		str_replace(
+		array(	"&#8212;",	"&amp;", 	"’", 	"'", 	"'", "‘"	),
+		array(	"—",				"&", 			"",		"", 	"", ""	),
+			$v["content"]
+		)
 	;
 	if (strpos($v["content"],"</table>") > 0) {
 		$node["description"] = strip_tags(substr($v["content"],8+strpos($v["content"],"</table>")));
