@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+$uri = $_SERVER['REQUEST_URI'];
+if (substr($uri,strlen($uri)-1,1) == "/") {
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -620,3 +623,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
     
   </body>
 </html>
+<?php 
+} else {
+  header("Location: {$uri}/");
+  exit;
+}
+?>
