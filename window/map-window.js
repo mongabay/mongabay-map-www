@@ -24,24 +24,9 @@
           newsMap.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
          });
          newsMap.addLayer(newsMapLayer);
+         $(".map-container").css("visibility","visible");
       });
 
-      var items = $('#myCarousel').find('.item');
-
-      var sql = new cartodb.SQL({ user: 'mongabay'});
-      sql.execute("SELECT * FROM {{table_name}} WHERE thumbnail != '' and title != '' ORDER BY updated DESC LIMIT 5", {table_name: 'mongabaydb'},{},function(){
-      })
-        .done(function(data) {
-          var i = 0;
-          $.each(items, function(){
-            $(this).find('h1').html(data.rows[i].title);     $(this).find('.lead').html(data.rows[i].description+"<a style=\"left:0px;position:relative;float:right;\" href=\""+data.rows[i].loc+"\">Read the full story &gt;&gt;</a>");
-            var img = new Image();
-            img.src = data.rows[i].thumbnail;
-            $(this).find('.carousel-img').append(img);
-            $(this).find('.article-href').attr("href",data.rows[i].loc);
-            i++;
-          }); 
-      });
 
       $('.mb-input-button').click(function(){
         var s = $('.mb-input').val();
