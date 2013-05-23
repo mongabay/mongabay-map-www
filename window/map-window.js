@@ -21,7 +21,7 @@
           var b = newsMap.getBounds();
           var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
           var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
-          newsMap.panTo([latlng[0] + d, latlng[1] - c ]);
+          newsMap.panTo([latlng[0] + d, latlng[1] + c ]);
          });
          newsMap.addLayer(newsMapLayer);
       });
