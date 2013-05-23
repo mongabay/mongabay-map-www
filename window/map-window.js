@@ -24,7 +24,6 @@
           newsMap.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
          });
          newsMap.addLayer(newsMapLayer);
-         $(".map-container").css("visibility","visible");
       });
 
 
@@ -51,8 +50,7 @@
         }
         });
 
-
+      
+         $(".map-container").css("visibility","visible");
     }
-
-
   function strLimitLength(str,len) { if (str.length > len) { return str.substr(0,len-2) + "..."; } else { return str; } }
