@@ -1,0 +1,26 @@
+ #news-map { width: 100%; height: 529px; display: block; float: left; position: absolute; z-index:0; }
+.navbar-inverse .navbar-inner { background-image: none; background-repeat: no-repeat; filter: none; background-color: #8cc640; }
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus { color: #8cc640; }
+li.active { background-color:gray; }
+.masthead .containerx { background-color: transparent; position: static; width: 550px; height: 428px; padding: 0 0px; margin: 0 0 0 50px; z-index:30; pointer-events:none; position:relative; top:-8px; }
+.masthead { width:100%; }
+.masthead .mongabay-search-box { top:-436px; height:0px; margin:none; float:right; left:-10px; }
+.masthead-search { float: left; position: relative; margin-top: 0px; line-height: 80px; width: 100%; color: #fff; background-color: #393e4a; background-color: rgba(57,62,75,0.95); -moz-border-radius: 6px; -webkit-border-radius: 6px; -khtml-border-radius: 6px; border-radius: 6px; }
+.masthead-search .mb-title { float: left; width: 90%; line-height: 40px; font-size: 38px; padding: 12px 8px 2px 20px; margin: 0; text-align: left; font-weight: bold; text-transform: uppercase; font-family: "Proxima Nova", sans-serif; }
+.masthead-search .mb-sub-title { float: left; width: 90%; line-height: 25px; font-size: 22px; padding: 2px 8px 2px 20px; margin: 0; text-align: left; color: #ddd; }
+.masthead-search .mb-sub-title-desc { float: left; width: 90%; line-height: 25px; font-size: 22px; padding: 2px 8px 10px 20px; margin: 0; text-align: left; color: #ddd; }
+.masthead-search .mb-input{ float: left; width: 375px; line-height: 40px; font-size: 32px; margin: 2px 0 10px 20px; padding: 5px; text-align: left; pointer-events:auto; }
+.masthead-search .mb-input-button{ float: left; width: 115px; height: 54px; margin-top: 2px; padding: 0px 8px 0 8px; font: bold 32px Arial; color: #FFFFFF; background: #8cc640; border: none; letter-spacing: -1px; cursor: pointer; pointer-events:auto; }
+.masthead-links { float: left; position: relative; width: 97%; margin-left:1.5%; color: #000; pointer-events:auto; background-color:#ccc; border-bottom-left-radius:6px; border-bottom-right-radius:6px; border:solid 1px #393e4a; padding:0px; }
+.masthead-links a { color: #000; cursor: pointer; }
+.masthead-links a:hover { color: #888; }
+.cartodb-popup-content-wrapper{ z-index: 1000; }
+.cartodb-popup-content .btn-large { position:relative; margin-top:10px; margin-left:auto; margin-right:auto; color:white; width:78%; }
+.cartodb-popup-content .btn-large:hover { color:black; }
+.masthead-search .mb-input { border-top-left-radius:8px; border-bottom-left-radius:8px; }
+.masthead-search .mb-input-button { border-top-right-radius:6px; border-bottom-right-radius:6px; font:normal 30px Arial; }
+.masthead-search .mb-input-button:hover { color:#44aa44; }
+.mongabay-search-box { position:absolute; }
+div.map-container { position:relative; width:800px; margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #333333; background-color: #ffffff; }
+div.map-container ul { padding:none; display:block; }
+div.map-container li { line-height:20px; }

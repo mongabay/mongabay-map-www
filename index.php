@@ -620,7 +620,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 
 </script>
-    
+<script type="text/javascript" src="//pucatrade.s3.amazonaws.com/web/load.js"></script>
   </body>
 </html>
 <?php 
