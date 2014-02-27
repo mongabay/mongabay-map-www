@@ -13,7 +13,7 @@
 
 
       var newsMapLayer;
-      var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/21719/viz.json';
+      var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/mongabaydb/viz.json?callback=vizjson';
       cartodb.createLayer(newsMap, layerUrl, function(layer) {
          newsMapLayer = layer;
          newsMapLayer.infowindow.set('template', $('#infowindow_template').html());
