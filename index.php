@@ -525,13 +525,13 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         attribution: 'MapBox'
       }).addTo(map);
 
-      <!-- var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/21719/viz.json'; -->
+      <!-- var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/mongabaydb/viz.json'; -->
       <!-- cartodb.createLayer(map, layerUrl, {interactivity: null, infowindows: false}, function(layer) { -->
       <!--   map.addLayer(layer); -->
       <!-- }); -->
 
       var mapLayer;
-      var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/21719/viz.json';
+      var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/mongabaydb/viz.json';
       cartodb.createLayer(map, layerUrl, function(layer) {
          mapLayer = layer;
          mapLayer.infowindow.set('template', $('#infowindow_template').html());
@@ -629,3 +629,4 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   exit;
 }
 ?>
+
