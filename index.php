@@ -16,13 +16,13 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
     <link href="css/docs.css" rel="stylesheet">
     <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://libs.cartodb.com/cartodb.js/v2/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="http://libs.cartodb.com/cartodb.js/v3/themes/css/cartodb.css" />
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
     <![endif]-->
     <style>
       body {
@@ -508,7 +508,7 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
     <script src="js/google-code-prettify/prettify.js"></script>
 
     <script src="js/application.js"></script>
-    <script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
     <script>
 
     function main() {
@@ -517,32 +517,50 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         zoomControl: true,
         center: [20, 20],
         zoom: 3
-      })
+      });
 
       // add a nice baselayer from mapbox
 
       L.tileLayer("https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-41exmwk3/{z}/{x}/{y}.png", {
-        attribution: 'MapBox'
+        attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
       }).addTo(map);
 
-      <!-- var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/mongabaydb/viz.json'; -->
-      <!-- cartodb.createLayer(map, layerUrl, {interactivity: null, infowindows: false}, function(layer) { -->
-      <!--   map.addLayer(layer); -->
-      <!-- }); -->
 
       var mapLayer;
-      var layerUrl = 'http://mongabay.cartodb.com/api/v1/viz/mongabaydb/viz.json';
-      cartodb.createLayer(map, layerUrl, function(layer) {
-         mapLayer = layer;
-         mapLayer.infowindow.set('template', $('#infowindow_template').html());
-         mapLayer.on('featureClick', function(e, latlng, pos, data) {
-          var b = map.getBounds();
-          var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
-          var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
-          map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
+//      var layerUrl = 'http://mongabay.cartodb.com/api/v3/viz/mongabaydb/viz.json';
+
+      var layerUrl = {
+        json: 'http://mongabay.cartodb.com/api/v2/viz/mongabaydb/viz.json'
+      };
+
+      // cartodb.createLayer(map, layerUrl, function(layer) {
+      //    mapLayer = layer;
+      //    mapLayer.infowindow.set('template', $('#infowindow_template').html());
+      //    mapLayer.on('featureClick', function(e, latlng, pos, data) {
+      //     var b = map.getBounds();
+      //     var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
+      //     var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
+      //     map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
+      //    });
+      //    map.addLayer(mapLayer);
+      // });
+
+
+      cartodb.createLayer(map, layerUrl.json).addTo(map)
+        .on('done', function(layer){
+          var sublayer = layer.getSubLayer(0);
+          sublayer.infowindow.set('template', $('#infowindow_template').html());
+          sublayer.on('featureClick', function(e, latlng, pos, data) {
+            var b = map.getBounds();
+            var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
+            var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
+            map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
          });
-         map.addLayer(mapLayer);
-      });
+
+
+        }).on('error', function(err){
+        });
+   // });
 
       var items = $('#myCarousel').find('.item');
 
