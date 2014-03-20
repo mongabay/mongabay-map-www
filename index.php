@@ -530,33 +530,25 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
 //      var layerUrl = 'http://mongabay.cartodb.com/api/v3/viz/mongabaydb/viz.json';
 
       var layerUrl = {
-        json: 'http://mongabay.cartodb.com/api/v2/viz/mongabaydb/viz.json'
+        json: 'http://mongabay.cartodb.com/api/v2/viz/61cc0450-a48a-11e3-ae10-0e10bcd91c2b/viz.json'
       };
+      
+      var mapLayer, subLayer;
 
-      // cartodb.createLayer(map, layerUrl, function(layer) {
-      //    mapLayer = layer;
-      //    mapLayer.infowindow.set('template', $('#infowindow_template').html());
-      //    mapLayer.on('featureClick', function(e, latlng, pos, data) {
-      //     var b = map.getBounds();
-      //     var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
-      //     var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
-      //     map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
-      //    });
-      //    map.addLayer(mapLayer);
-      // });
-
-
-      cartodb.createLayer(map, layerUrl.json).addTo(map)
+      cartodb.createLayer(map, layerUrl.json,{infowindow:true}).addTo(map)
         .on('done', function(layer){
-          var sublayer = layer.getSubLayer(0);
-          sublayer.infowindow.set('template', $('#infowindow_template').html());
-          sublayer.on('featureClick', function(e, latlng, pos, data) {
+          mapLayer = layer;
+          mapLayer.setInteraction(true);
+          subLayer = mapLayer.getSubLayer(0);
+          subLayer.setInteraction(true);
+      //    subLayer.infowindow.set('template', $('#infowindow_template').html());
+          subLayer.on('featureClick', function(e, latlng, pos, data) {
+
             var b = map.getBounds();
             var c = (b.getSouthEast().lng - b.getSouthWest().lng) / 6;
             var d = (b.getNorthEast().lat - b.getSouthWest().lat) / 4;
             map.panTo([latlng[0] + d, latlng[1] /* -c */ ]);
-         });
-
+          });
 
         }).on('error', function(err){
         });
@@ -565,7 +557,7 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
       var items = $('#myCarousel').find('.item');
 
       var sql = new cartodb.SQL({ user: 'mongabay'});
-      sql.execute("SELECT * FROM {{table_name}} WHERE thumbnail != '' and title != '' ORDER BY updated DESC LIMIT 5", {table_name: 'mongabaydb'},{},function(){
+      sql.execute("SELECT * FROM mongabaydb WHERE thumbnail != '' and title != '' ORDER BY updated DESC LIMIT 5", {table_name: 'mongabaydb'},{},function(){
 
        
        // $(".leaflet-left").css("right","10px");
@@ -585,15 +577,15 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
 
       $('.mb-input-button').click(function(){
         var s = $('.mb-input').val();
-        mapLayer.setQuery("SELECT * FROM {{table_name}} WHERE description ILIKE '%"+s+"%'");
+        mapLayer.setQuery("SELECT * FROM mongabaydb WHERE description ILIKE '%"+s+"%'");
       });
       $('.masthead-links .clear').click(function(){
         $('.mb-input').val('');
-        mapLayer.setQuery("SELECT * FROM {{table_name}}");
+        mapLayer.setQuery("SELECT * FROM mongabaydb");
       });
       $('.masthead-links a:not(.clear)').click(function(){
         var s = $(this).html();
-        mapLayer.setQuery("SELECT * FROM {{table_name}} WHERE description ILIKE '%"+s+"%'");
+        mapLayer.setQuery("SELECT * FROM mongabaydb WHERE description ILIKE '%"+s+"%'");
         $('.mb-input').val(s);
       });
 
@@ -602,7 +594,7 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         var code = ('charCode' in event) ? event.charCode : event.keyCode;
         if (code === 13) {
            var s = $('.mb-input').val();
-           mapLayer.setQuery("SELECT * FROM {{table_name}} WHERE description ILIKE '%"+s+"%'");
+           mapLayer.setQuery("SELECT * FROM mongabaydb WHERE description ILIKE '%"+s+"%'");
         }
         });
 
@@ -638,13 +630,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 
 </script>
-<script type="text/javascript" src="//pucatrade.s3.amazonaws.com/web/load.js"></script>
-  </body>
-</html>
-<?php 
+</body>
+</html><?php 
 } else {
   header("Location: {$uri}/");
   exit;
 }
 ?>
-
