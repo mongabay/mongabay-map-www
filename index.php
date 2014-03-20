@@ -10,7 +10,6 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet">
@@ -38,7 +37,6 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         background-repeat: no-repeat;
         filter: none;
         background-color: #8cc640;
-/*        background-color: rgba(57,62,75,0.95);*/
       }
 
       .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
@@ -70,17 +68,6 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         margin:none;
         float:right;
         left:-10px;
-/*        background-color: transparent;
-        position: static;
-        width: 550px;
-        height: 428px;
-        padding: 0 0px;
-        margin: 0 0 0 50px;
-        z-index:30;
-        pointer-events:none;
-        position:relative;
-        top:-8px;*/
-
       }
 
 
@@ -154,23 +141,16 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         color: #888;
       }
 
-
- /* CUSTOMIZE THE CAROUSEL
-    -------------------------------------------------- */
-
     .article-slide {
       margin-top:20px;
     }
 
-    /* Carousel base class */
     .carousel {
       margin-bottom: 60px;
       margin-left: -20px;
       margin-right: -20px;
       height: 200px;
       overflow: visible;
-/*        background-color: #393e4a;
-        background-color: rgba(57,62,75,0.95);*/
     }
 
     .carousel .container {
@@ -275,11 +255,9 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
 
       .mongabay-search-box {
         position:absolute;
-/*        top:-200px;*/
       }
 
     </style>
-    <!-- Le fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
@@ -460,34 +438,14 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
 
 </div>
 
-
-
-    <!-- Footer
-    ================================================== -->
     <footer class="footer">
       <div class="container">
-       
         <p>Please note, the geospatial map mostly includes stories posted after January 1, 2013.</p>
         <p>We are continually working to add older stories to the system.</p>
         <p>&copy; 2013, Mongabay</p>
-      <!--
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">Changelog</a></li>
-        </ul>
-      -->
       </div>
     </footer>
 
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-transition.js"></script>
@@ -520,14 +478,12 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
       });
 
       // add a nice baselayer from mapbox
-
       L.tileLayer("https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-41exmwk3/{z}/{x}/{y}.png", {
         attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
       }).addTo(map);
 
 
       var mapLayer;
-//      var layerUrl = 'http://mongabay.cartodb.com/api/v3/viz/mongabaydb/viz.json';
 
       var layerUrl = {
         json: 'http://mongabay.cartodb.com/api/v2/viz/61cc0450-a48a-11e3-ae10-0e10bcd91c2b/viz.json'
@@ -552,17 +508,14 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
 
         }).on('error', function(err){
         });
-   // });
 
       var items = $('#myCarousel').find('.item');
 
       var sql = new cartodb.SQL({ user: 'mongabay'});
       sql.execute("SELECT * FROM mongabaydb WHERE thumbnail != '' and title != '' ORDER BY updated DESC LIMIT 5", {table_name: 'mongabaydb'},{},function(){
 
-       
-       // $(".leaflet-left").css("right","10px");
-      })
-        .done(function(data) {
+      
+      }).done(function(data) {
           var i = 0;
           $.each(items, function(){
             $(this).find('h1').html(data.rows[i].title); 
@@ -598,38 +551,11 @@ if (substr($uri,strlen($uri)-1,1) == "/") {
         }
         });
 
-
     }
     window.onload = main;
-
-
-function strLimitLength(str,len) {
-  if (str.length > len) {
-    return str.substr(0,len-2) + "...";
-  } else {
-    return str;
-  }
-
-
-
-}
-
-    </script>
-
-
-<script type="text/javascript">
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-12973256-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
+    function strLimitLength(str,len) { if (str.length > len) { return str.substr(0,len-2) + "..."; } else { return str; } }
 </script>
+<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-12973256-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script>
 </body>
 </html><?php 
 } else {
