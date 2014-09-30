@@ -22,8 +22,8 @@ if (!empty($_GET["site"])) {
 }
 
 //$xml = file_get_contents("http://{$site}.mongabay.com/xml/{$feed}.xml?limit={$limit}");
-//$xml = file_get_contents("http://www.mongabay.co.id/feed/");
-$xml = file_get_contents("http://localhost/code/mongabay-map-www/json/mongabay.co.id/test.xml");
+$xml = file_get_contents("http://www.mongabay.co.id/feed/");
+//$xml = file_get_contents("http://localhost/code/mongabay-map-www/json/mongabay.co.id/test.xml");
 $obj = xml2array($xml,$get_attributes=1);
 $out = array();
 
